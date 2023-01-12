@@ -2,19 +2,17 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as dotenv from 'dotenv'
 
 // import * as firebase from 'firebase'
 import { initializeApp, getApps } from 'firebase/app'
 
 import Landing from './components/auth/Landing';
 import Register from './components/auth/Register'
+import { firebaseConfig } from './firebase'
 
-dotenv.config()
+const app = initializeApp(firebaseConfig)
 
-if (getApps().length === 0) {
-  initializeApp(process.env.FIREBASE_CONFIG)
-}
+// const app = initializeApp(firebaseConfig)
 
 const Stack = createNativeStackNavigator()
 export default function App() {
